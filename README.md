@@ -26,23 +26,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/palmerusaf/memory-card-game">
+  <a href="https://github.com/palmerusaf/shopping-cart">
     <img src="./public/favicon.ico" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Memory Card Game</h3>
+<h3 align="center">Shopping Cart</h3>
 
   <p align="center">
-    A simple picture card game to test your memory.
+    Typical shopping website with features you come to expect.
     <br />
-    <a href="https://github.com/palmerusaf/memory-card-game"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/palmerusaf/shopping-cart"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://palmerusaf.github.io/memory-card-game">View Demo</a>
+    <a href="https://palmerusaf.github.io/shopping-cart">View Demo</a>
     ·
-    <a href="https://github.com/palmerusaf/memory-card-game/issues">Report Bug</a>
+    <a href="https://github.com/palmerusaf/shopping-cart/issues">Report Bug</a>
     ·
-    <a href="https://github.com/palmerusaf/memory-card-game/issues">Request Feature</a>
+    <a href="https://github.com/palmerusaf/shopping-cart/issues">Request Feature</a>
   </p>
 </div>
 
@@ -69,7 +69,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://palmerusaf.github.io/memory-card-game)
+[![Product Name Screen Shot][product-screenshot]](https://palmerusaf.github.io/shopping-cart)
 
 This project is from the open source web dev course called The Odin Project. It is designed to test your memory.
 
@@ -78,25 +78,29 @@ This project is from the open source web dev course called The Odin Project. It 
 ### Built With
 
 - [React.js](https://reactjs.org/)
+- [Jest](https://jestjs.io/)
+- [Sass](https://sass-lang.com/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/api/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Purpose
 
-The Purpose of this project is to apply everything I have learned so far about React components and hooks.
+The purpose of this project is to gain exposure to React routing, React testing, and react hooks.
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-- [X] Track If User Has Click Image Before
-- [X] Track User's Score
-  - [X] Track High Score
-- [X] Add Images
-- [X] Randomize Image Order
-- [X] Make Mobile Responsive
+- [ ] Nav Bar
+  - [ ] Cart Icon
+- [ ] Home Screen
+- [ ] Shopping Screen
+  - [ ] Shopping Item
+    - [ ] Quantity Buttons
+- [ ] Checkout Screen
 
-See the [open issues](https://github.com/palmerusaf/memory-card-game/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/palmerusaf/shopping-cart/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -121,8 +125,6 @@ Don't forget to give the project a star! Thanks again!
 
 - Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-- Alphabet SVGs under CC0 License from [wikimedia](https://commons.wikimedia.org/wiki/Phoenician_alphabet)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
@@ -131,7 +133,7 @@ Don't forget to give the project a star! Thanks again!
 
 Branden Palmer - [@branden_palmer8](https://twitter.com/branden_palmer8) - brandenpalmer08@gmail.com
 
-Project Link: [https://github.com/palmerusaf/memory-card-game](https://github.com/palmerusaf/memory-card-game)
+Project Link: [https://github.com/palmerusaf/shopping-cart](https://github.com/palmerusaf/shopping-cart)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -140,23 +142,23 @@ Project Link: [https://github.com/palmerusaf/memory-card-game](https://github.co
 ## Acknowledgments
 
 - [The Odin Project](https://www.theodinproject.com/)
-- Background photo by <a href="https://unsplash.com/@melodytemple?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Melody Temple</a> on <a href="https://unsplash.com/s/photos/jungle?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/palmerusaf/memory-card-game.svg?style=for-the-badge
-[contributors-url]: https://github.com/palmerusaf/memory-card-game/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/palmerusaf/memory-card-game.svg?style=for-the-badge
-[forks-url]: https://github.com/palmerusaf/memory-card-game/network/members
-[stars-shield]: https://img.shields.io/github/stars/palmerusaf/memory-card-game.svg?style=for-the-badge
-[stars-url]: https://github.com/palmerusaf/memory-card-game/stargazers
-[issues-shield]: https://img.shields.io/github/issues/palmerusaf/memory-card-game.svg?style=for-the-badge
-[issues-url]: https://github.com/palmerusaf/memory-card-game/issues
-[license-shield]: https://img.shields.io/github/license/palmerusaf/memory-card-game.svg?style=for-the-badge
-[license-url]: https://github.com/palmerusaf/memory-card-game/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/palmerusaf/shopping-cart.svg?style=for-the-badge
+[contributors-url]: https://github.com/palmerusaf/shopping-cart/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/palmerusaf/shopping-cart.svg?style=for-the-badge
+[forks-url]: https://github.com/palmerusaf/shopping-cart/network/members
+[stars-shield]: https://img.shields.io/github/stars/palmerusaf/shopping-cart.svg?style=for-the-badge
+[stars-url]: https://github.com/palmerusaf/shopping-cart/stargazers
+[issues-shield]: https://img.shields.io/github/issues/palmerusaf/shopping-cart.svg?style=for-the-badge
+[issues-url]: https://github.com/palmerusaf/shopping-cart/issues
+[license-shield]: https://img.shields.io/github/license/palmerusaf/shopping-cart.svg?style=for-the-badge
+[license-url]: https://github.com/palmerusaf/shopping-cart/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/branden-palmer-968765120
 [product-screenshot]: ./src//imgs/screen-shot.png
