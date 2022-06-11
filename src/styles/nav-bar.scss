@@ -1,14 +1,21 @@
-.nav-bar {
-  &__ {
-    &item {
-      list-style: none;
-    }
-    &item > * {
-      text-decoration: none;
-      color: blue;
-    }
-    &item--active {
-      color: red;
+nav {
+  ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    li {
+      a {
+        display: block;
+        text-decoration: none;
+        color: red;
+        background-color: yellow;
+        text-align: center;
+      }
+      a.active {
+        color: blue;
+        width: 100%;
+        background-color: green;
+      }
     }
   }
 }

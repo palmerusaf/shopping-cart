@@ -3,12 +3,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
-  const activeClassName = "nav-bar__item--active";
+  const activeClassName = "active";
 
   return (
-    <nav className="nav-bar">
+    <nav>
       <ul>
-        <li className="nav-bar__item">
+        <li>
           <NavLink
             className={({ isActive }) =>
               isActive ? activeClassName : undefined
@@ -18,7 +18,7 @@ export default function NavBar() {
             Home
           </NavLink>
         </li>
-        <li className="nav-bar__item">
+        <li>
           <NavLink
             className={({ isActive }) =>
               isActive ? activeClassName : undefined
@@ -28,7 +28,7 @@ export default function NavBar() {
             Shop
           </NavLink>
         </li>
-        <li className="nav-bar__item">
+        <li>
           <NavLink
             className={({ isActive }) =>
               isActive ? activeClassName : undefined
