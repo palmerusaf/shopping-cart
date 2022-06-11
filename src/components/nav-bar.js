@@ -4,37 +4,23 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   const activeClassName = "active";
+  const setClass = ({ isActive }) => (isActive ? activeClassName : undefined);
 
   return (
     <nav>
       <ul>
         <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
-            to="/home"
-          >
+          <NavLink className={setClass} to="/home">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
-            to="/shop"
-          >
+          <NavLink className={setClass} to="/shop">
             Shop
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? activeClassName : undefined
-            }
-            to="/checkout"
-          >
+          <NavLink className={setClass} to="/checkout">
             Checkout
           </NavLink>
         </li>
