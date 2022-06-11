@@ -1,0 +1,14 @@
+.nav-bar {
+  &__ {
+    &item {
+      list-style: none;
+    }
+    &item > * {
+      text-decoration: none;
+      color: blue;
+    }
+    &item--active {
+      color: red;
+    }
+  }
+}
