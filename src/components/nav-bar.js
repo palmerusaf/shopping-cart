@@ -21,7 +21,7 @@ export default function NavBar() {
         </li>
         <li>
           <NavLink className={setClass} to="/checkout">
-            Checkout
+            <span class="material-symbols-sharp">shopping_cart</span>
           </NavLink>
         </li>
       </ul>
