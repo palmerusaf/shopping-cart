@@ -3,18 +3,23 @@ nav {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
     li {
       a {
         display: block;
         text-decoration: none;
         color: red;
-        background-color: yellow;
         text-align: center;
+        font-size: 1.1rem;
+        transition: 300ms;
+        transform: rotate(-45deg);
       }
       a.active {
         color: blue;
         width: 100%;
-        background-color: green;
+        transform: scale(1.2) rotate(-45deg);
+        transition: 300ms;
       }
     }
   }
