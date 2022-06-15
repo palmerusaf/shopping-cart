@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
+$dark-blue: #062e67;
+$red-o: #c12029;
+
+.logo {
+  font-family: "Hammersmith One";
+  color: white;
+  &__letter-o {
+    color: $red-o;
+  }
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: $dark-blue;
+  padding: 1rem;
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}

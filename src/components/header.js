@@ -5,7 +5,7 @@ import NavBar from "./nav-bar";
 function Header() {
   return (
     <header>
-      <h1>Logo</h1>
+      <h1 className="logo">p<span className="logo__letter-o">o</span>pcopy</h1>
       <NavBar />
     </header>
   );

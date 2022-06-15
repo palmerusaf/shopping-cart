@@ -9,16 +9,16 @@ nav {
       a {
         display: block;
         text-decoration: none;
-        color: red;
+        color: white;
         text-align: center;
         font-size: 1.1rem;
         transition: 300ms;
         transform: rotate(-45deg);
       }
       a.active {
-        color: blue;
         width: 100%;
         transform: scale(1.2) rotate(-45deg);
+        font-weight: bold;
         transition: 300ms;
       }
     }
