@@ -1,11 +1,17 @@
 import "../styles/header.scss";
 import React from "react";
 import NavBar from "./nav-bar";
+import Logo from "../imgs/popcopy-logo.jpg";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header>
-      <h1 className="logo">p<span className="logo__letter-o">o</span>pcopy</h1>
+      <Link to={"/"}>
+        <h1 className="logo">
+          <img src={Logo} alt="logo" className="logo__img" />
+        </h1>
+      </Link>
       <NavBar />
     </header>
   );

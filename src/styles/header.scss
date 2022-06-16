@@ -3,10 +3,10 @@ $dark-blue: #062e67;
 $red-o: #c12029;
 
 .logo {
-  font-family: "Hammersmith One";
-  color: white;
-  &__letter-o {
-    color: $red-o;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__img{
   }
 }
 
