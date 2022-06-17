@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
-$dark-blue: #062e67;
-$red-o: #c12029;
+@import './variables.scss';
 
 .logo {
   display: flex;
