@@ -1,0 +1,19 @@
+@import "./variables.scss";
+
+.footer {
+  background-color: $dark-blue;
+  padding: .5rem;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    gap: .5rem;
+  }
+  &__img {
+    color: white;
+    height: 2rem;
+  }
+}
