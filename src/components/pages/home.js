@@ -9,13 +9,15 @@ export default function Home() {
         alt="Team Image"
         className="team-img"
       />
-      <p className="welcome-msg">
-        You'll have an unforgettable customer experience!
-      </p>
-      <p className="welcome-msg">We guarantee it.</p>
-      <Link to={"/shop"}>
-        <button className="shop-btn">Shop Now</button>
-      </Link>
+      <div className="welcome-container">
+        <p className="welcome-msg">
+          You'll have an unforgettable customer experience!
+        </p>
+        <p className="welcome-msg">We guarantee it.</p>
+        <Link to={"/shop"}>
+          <button className="shop-btn">Shop Now</button>
+        </Link>
+      </div>
     </div>
   );
 }
