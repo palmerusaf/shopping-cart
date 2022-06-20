@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "title": "toner",
+    "price": "$96.99",
+    "description": "Black like oil but more expensive!",
+    "image": {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Toner-container-black-0a.jpg/320px-Toner-container-black-0a.jpg",
+      "alt": "Toner Cartridge"
+    }
+  }
+]
