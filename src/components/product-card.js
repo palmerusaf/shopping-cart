@@ -5,7 +5,7 @@ export default function ProductCard(props) {
   return (
     <div className="card">
       <h2 className="card__title">{title}</h2>
-      <img className="card__img" src={image.src} alt={image.alt} />
+      <img className="card__img" src={image} alt={title} />
       <p className="card__description">{description}</p>
       <label className="card__price" htmlFor="price">
         Price:{" "}

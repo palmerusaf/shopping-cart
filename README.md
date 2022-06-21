@@ -143,6 +143,7 @@ Project Link: [https://github.com/palmerusaf/shopping-cart](https://github.com/p
 
 - [The Odin Project](https://www.theodinproject.com/)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- [Product images from wikimedia](https://commons.wikimedia.org/wiki/Main_Page)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

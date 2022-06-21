@@ -1,12 +1,74 @@
 [
   {
-    "id": "1",
     "title": "Toner",
-    "price": "$96.99",
+    "price": "$96.69",
     "description": "Black like oil but more expensive!",
-    "image": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Toner-container-black-0a.jpg/320px-Toner-container-black-0a.jpg",
-      "alt": "Toner Cartridge"
-    }
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Toner-container-black-0a.jpg/320px-Toner-container-black-0a.jpg"
+  },
+  {
+    "title": "Plastic Cement",
+    "price": "$9.99",
+    "description": "Not for human consumption.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Super_glue.jpg/320px-Super_glue.jpg"
+  },
+  {
+    "title": "PC Load Letter",
+    "price": "$49.99",
+    "description": "No idea.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/PC_Load_Letter.jpg/320px-PC_Load_Letter.jpg"
+  },
+  {
+    "title": "Cyan Ink",
+    "price": "$56.99",
+    "description": "Required for printing black and white, not sold separately.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Epson_ink-jet_cartridges_T128-4540.jpg/480px-Epson_ink-jet_cartridges_T128-4540.jpg"
+  },
+  {
+    "title": "Office Printer",
+    "price": "$15,000.99",
+    "description": "Twice the parts of a rocket ship, half the reliability.",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/KonicaMinolta-bizhub750.png/276px-KonicaMinolta-bizhub750.png"
+  },
+  {
+    "title": "Paper Clips",
+    "price": "$13.99",
+    "description": "Great for making chains, not great for making suggestions.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Colourful_assortment_of_paper_clips_%2810421946796%29.jpg/320px-Colourful_assortment_of_paper_clips_%2810421946796%29.jpg"
+  },
+  {
+    "title": "Paper Shredder",
+    "price": "$149.99",
+    "description": "Satisfying.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Paper_shredder_-_detail-9839.jpg/320px-Paper_shredder_-_detail-9839.jpg"
+  },
+  {
+    "title": "Fax Machine",
+    "price": "$249.99",
+    "description": "Why?",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Fax-amarys.jpg/295px-Fax-amarys.jpg"
+  },
+  {
+    "title": "Coffee Maker",
+    "price": "$60.00",
+    "description": "You should already have this.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Braun_Coffee_Maker.jpg/196px-Braun_Coffee_Maker.jpg"
+  },
+  {
+    "title": "Stapler",
+    "price": "$17.99",
+    "description": "Comes pre-jammed, staples not included.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Stapler-swingline-red.jpg/320px-Stapler-swingline-red.jpg"
+  },
+  {
+    "title": "Dusty Pack of Blank CDs",
+    "price": "$1.99",
+    "description": "Cheaper than coasters, great for scaring away birds.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Blank-cd.jpg"
+  },
+  {
+    "title": "Motivational Poster",
+    "price": "$1.99",
+    "description": "Increases morale by up to 25%",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/MOTIVATION_QUOTES.jpg/320px-MOTIVATION_QUOTES.jpg"
   }
 ]
