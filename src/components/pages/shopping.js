@@ -1,9 +1,9 @@
 import CardArea from "../card-area.js";
 
-export default function Shopping() {
+export default function Shopping(props) {
   return (
     <div className="home">
-      <CardArea />
+      <CardArea addToCartClick={props.addToCartClick} />
     </div>
   );
 }

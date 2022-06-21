@@ -1,4 +1,5 @@
-export default function ProductCards(props) {
+export default function ProductCard(props) {
+  const { addToCartClick } = props;
   const { title, price, description, image } = props.productData;
 
   return (
@@ -12,6 +13,9 @@ export default function ProductCards(props) {
           {price}
         </data>
       </label>
+      <button className="card__add-button" onClick={addToCartClick}>
+        Add to Cart
+      </button>
     </div>
   );
 }
