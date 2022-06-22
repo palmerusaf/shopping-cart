@@ -1,3 +1,5 @@
+import "../styles/product-card.scss";
+
 export default function ProductCard(props) {
   const { addToCartClick } = props;
   const { title, price, description, image } = props.productData;

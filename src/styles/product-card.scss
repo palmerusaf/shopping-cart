@@ -1,0 +1,76 @@
+@import "./variables.scss";
+@import "./animations.scss";
+
+.card-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  padding: 0.5rem;
+  background-color: lightgray;
+}
+
+.card {
+  animation: 300ms fadeIn;
+  display: flex;
+  flex-direction: column;
+  //box
+  padding: 0.6rem;
+  border-radius: 7px;
+  margin: 0.5rem;
+  background-color: #fff;
+
+  //items
+  text-align: center;
+  justify-content: space-around;
+  &__title {
+    font-size: 1rem;
+  }
+  &__img {
+    border-radius: 7px;
+    margin-top: auto;
+  }
+  &__description {
+    margin-top: 0.5rem;
+    margin-bottom: auto;
+    font-size: 1rem;
+    line-height: 0.99rem;
+  }
+  &__price {
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  &__add-button {
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    background-color: $dark-blue;
+    cursor: pointer;
+    color: white;
+    padding: 0.4rem;
+    transition: 300ms;
+    &:hover,
+    &:focus {
+      transition: 300ms;
+      transform: scale(1.1);
+    }
+  }
+}
+@media screen and (min-width: 1000px) {
+  .card-area {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+
+  .card {
+    margin: 1rem;
+    padding: 1rem;
+    &__title {
+      font-size: 1.75rem;
+    }
+    &__description {
+      font-size: 1.3rem;
+      line-height: 1.3rem;
+    }
+    &__price {
+      font-size: 1.75rem;
+    }
+  }
+}
