@@ -1,9 +1,15 @@
-import CardArea from "../card-area.js";
+import ProductCard from "../product-card.js";
 
 export default function Shopping(props) {
-  return (
-    <div className="home">
-      <CardArea addToCartClick={props.addToCartClick} />
-    </div>
-  );
+  const { PRODUCTS, addToCartClick } = props;
+
+  const productCards = PRODUCTS.map((product) => (
+    <ProductCard
+      addToCartClick={addToCartClick}
+      productData={product}
+      key={product.title}
+    />
+  ));
+
+  return <div className="card-area">{productCards}</div>;
 }
