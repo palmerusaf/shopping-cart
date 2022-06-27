@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import ProductCard from "../components/product-card";
 import userEvent from "@testing-library/user-event";
@@ -12,24 +12,30 @@ const productTestData = {
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Toner-container-black-0a.jpg/320px-Toner-container-black-0a.jpg",
 };
 
-describe("Product Card Button", () => {
-  const { getByRole } = render(
-    <ProductCard
-      addToCartClick={(e) => {
-        console.log(e);
-      }}
-      productData={productTestData}
-    />
-  );
-  const cartButton = getByRole("button");
+it("Displays correct msg before click", () => {
+  render(<ProductCard productData={productTestData} />);
+  const cartButton = screen.getByRole("button");
+  expect(cartButton.textContent).toEqual("Add to Cart");
+});
 
-  it("Displays correct msg before click", () => {
-    expect(cartButton.textContent).toEqual("Add to Cart");
+it("Displays adding msg after click", () => {
+  render(<ProductCard productData={productTestData} />);
+  const cartButton = screen.getByRole("button");
+  userEvent.click(cartButton);
+  expect(cartButton.textContent).toEqual("Adding to Cart...");
+});
+
+it("Resets msg after 1000ms", async () => {
+  const sleep = (period) =>
+    new Promise((resolve) => setTimeout(resolve, period));
+
+  act(() => {
+    render(<ProductCard productData={productTestData} />);
   });
-  it("Displays adding msg after click", () => {
-    act(() => {
-      userEvent.click(cartButton);
-    });
-    expect(cartButton.textContent).toEqual("Adding to Cart...");
+  const cartButton = screen.getByRole("button");
+  userEvent.click(cartButton);
+  await act(async () => {
+    await sleep(1100);
   });
+  expect(cartButton.textContent).toEqual("Add to Cart");
 });

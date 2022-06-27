@@ -2,13 +2,14 @@ import "../styles/product-card.scss";
 import React, { useState } from "react";
 
 export default function ProductCard(props) {
-  const { addToCartClick } = props;
   const { title, price, description, image } = props.productData;
   const [buttonName, setButtonName] = useState("Add to Cart");
 
   const changeButtonText = () => {
-    console.log("click");
     setButtonName("Adding to Cart...");
+    setTimeout(() => {
+      setButtonName("Add to Cart");
+    }, 1000);
   };
 
   return (
@@ -27,13 +28,7 @@ export default function ProductCard(props) {
           {price}
         </data>
       </label>
-      <button
-        className="card__add-button"
-        onClick={(e) => {
-          addToCartClick(e);
-          changeButtonText();
-        }}
-      >
+      <button className="card__add-button" onClick={changeButtonText}>
         {buttonName}
       </button>
     </div>
