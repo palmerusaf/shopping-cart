@@ -26,8 +26,7 @@ it("Displays adding msg after click", () => {
 });
 
 it("Resets msg after 1000ms", async () => {
-  const sleep = (period) =>
-    new Promise((resolve) => setTimeout(resolve, period));
+  jest.useFakeTimers();
 
   act(() => {
     render(<ProductCard productData={productTestData} />);
@@ -35,7 +34,7 @@ it("Resets msg after 1000ms", async () => {
   const cartButton = screen.getByRole("button");
   userEvent.click(cartButton);
   await act(async () => {
-    await sleep(1100);
+    jest.advanceTimersByTime(1100);
   });
   expect(cartButton.textContent).toEqual("Add to Cart");
 });
