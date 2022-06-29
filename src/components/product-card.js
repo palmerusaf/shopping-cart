@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export default function ProductCard(props) {
   const { title, price, description, image } = props.productData;
   const [buttonName, setButtonName] = useState("Add to Cart");
+  const handleAddToCart = props.handleAddToCart || ((e) => e);
 
   const changeButtonText = () => {
     setButtonName("Adding to Cart...");
@@ -28,7 +29,13 @@ export default function ProductCard(props) {
           {price}
         </data>
       </label>
-      <button className="card__add-button" onClick={changeButtonText}>
+      <button
+        className="card__add-button"
+        onClick={(e) => {
+          handleAddToCart(e);
+          changeButtonText();
+        }}
+      >
         {buttonName}
       </button>
     </div>

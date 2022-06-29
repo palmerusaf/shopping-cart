@@ -2,9 +2,15 @@ import "../styles/nav-bar.scss";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(props) {
   const activeClassName = "active";
   const setClass = ({ isActive }) => (isActive ? activeClassName : undefined);
+
+  const { totalCartItems } = props;
+  const itemsIndicator =
+    totalCartItems !== 0 ? (
+      <span className="items-indicator">{totalCartItems}</span>
+    ) : null;
 
   return (
     <nav>
@@ -21,7 +27,9 @@ export default function NavBar() {
         </li>
         <li>
           <NavLink className={setClass} to="/checkout">
-            <span className="material-symbols-sharp">shopping_cart</span>
+            <span className="material-symbols-sharp">
+              shopping_cart{itemsIndicator}
+            </span>
           </NavLink>
         </li>
       </ul>

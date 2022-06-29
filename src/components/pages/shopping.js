@@ -1,11 +1,11 @@
 import ProductCard from "../product-card.js";
 
 export default function Shopping(props) {
-  const { PRODUCTS, addToCartClick } = props;
+  const { PRODUCTS, handleAddToCart } = props;
 
   const productCards = PRODUCTS.map((product) => (
     <ProductCard
-      addToCartClick={addToCartClick}
+      handleAddToCart={handleAddToCart}
       productData={product}
       key={product.title}
     />

@@ -4,7 +4,7 @@ import NavBar from "./nav-bar";
 import Logo from "../imgs/popcopy-logo.jpg";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <Link to={"/"}>
@@ -12,7 +12,7 @@ function Header() {
           <img src={Logo} alt="logo" />
         </h1>
       </Link>
-      <NavBar />
+      <NavBar totalCartItems={props.totalCartItems} />
     </header>
   );
 }
