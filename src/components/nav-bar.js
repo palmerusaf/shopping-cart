@@ -9,7 +9,7 @@ export default function NavBar(props) {
   const { totalCartItems } = props;
   const itemsIndicator =
     totalCartItems !== 0 ? (
-      <span data-testid="items-indicator" className="items-indicator">
+      <span data-testid="items-indicator" className="cart-icon__indicator">
         {totalCartItems}
       </span>
     ) : null;
@@ -29,7 +29,7 @@ export default function NavBar(props) {
         </li>
         <li>
           <NavLink className={setClass} to="/checkout">
-            <span className="material-symbols-sharp">
+            <span className="material-symbols-sharp cart-icon">
               shopping_cart{itemsIndicator}
             </span>
           </NavLink>
