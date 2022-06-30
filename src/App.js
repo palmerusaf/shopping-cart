@@ -9,7 +9,6 @@ function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
 
   const handleAddToCart = (event) => {
-    console.log("here");
     setTotalCartItems(totalCartItems + 1);
   };
 

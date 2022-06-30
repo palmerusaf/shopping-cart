@@ -9,7 +9,9 @@ export default function NavBar(props) {
   const { totalCartItems } = props;
   const itemsIndicator =
     totalCartItems !== 0 ? (
-      <span className="items-indicator">{totalCartItems}</span>
+      <span data-testid="items-indicator" className="items-indicator">
+        {totalCartItems}
+      </span>
     ) : null;
 
   return (
