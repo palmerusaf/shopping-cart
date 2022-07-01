@@ -58,12 +58,14 @@ describe("Checkout Screen Tests", () => {
         screen.getByRole("heading", { name: "Toner" })
       ).toBeInTheDocument();
     });
+
     it("Second item img and title are rendered correctly", () => {
       expect(screen.getByAltText("Plastic Cement")).toBeInTheDocument();
       expect(
         screen.getByRole("heading", { name: "Plastic Cement" })
       ).toBeInTheDocument();
     });
+
     it("Quantity adjustment buttons are rendered", () => {
       const labels = screen.getAllByLabelText("Adjust Quantity");
       const spinButtons = screen.getAllByRole("spinbutton");
@@ -95,16 +97,67 @@ describe("Checkout Screen Tests", () => {
   });
 
   describe("Quantity Adjustment Tests", () => {
-    it.todo("Decrement button decreases the quantity of an item");
-    it.todo("Increment button increases the quantity of an item");
-    it.todo("Setting adjuster input to 3 sets quantity of an item to 3");
-    it.todo("Changing quantity also changes quantity on cart icon");
+    beforeEach(() => {
+      clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
+      goToScreen("shopping_cart");
+    });
+
+    it("Decrement button decreases the quantity of an item", () => {
+      const minusButton = screen.getByRole("button", { name: "-" });
+      userEvent.click(minusButton);
+      const spinButton = screen.queryByRole("spinbutton");
+      expect(spinButton).toHaveValue(1);
+    });
+
+    it("Decrement button deletes item when quantity is 1", () => {
+      const minusButton = screen.getByRole("button", { name: "-" });
+      userEvent.click(minusButton);
+      userEvent.click(minusButton);
+
+      const spinButton = screen.queryByRole("spinbutton");
+      expect(spinButton).toBeNull();
+      const label = screen.queryByLabelText("Adjust Quantity");
+      expect(label).toBeNull();
+      const subtractButton = screen.queryByRole("button", { name: "-" });
+      expect(subtractButton).toBeNull();
+      const addButton = screen.queryByRole("button", { name: "+" });
+      expect(addButton).toBeNull();
+      const img = screen.queryByAltText("Toner");
+      expect(img).toBeNull();
+      const title = screen.queryByRole("heading", { name: "Toner" });
+      expect(title).toBeNull();
+    });
+
+    it("Increment button increases the quantity of an item", () => {
+      const addButton = screen.getByRole("button", { name: "+" });
+      userEvent.click(addButton);
+      const spinButton = screen.queryByRole("spinbutton");
+      expect(spinButton).toHaveValue(3);
+    });
+
+    it("Setting adjuster input to 3 sets quantity of an item to 3", () => {
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.type(spinButton, "3");
+      expect(spinButton).toHaveValue(3);
+    });
+
+    it("Changing quantity also changes quantity on cart icon", () => {
+      const itemsIndicator = screen.getByTestId("items-indicator");
+      expect(itemsIndicator.textContent).toEqual(2);
+
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.type(spinButton, "9");
+      expect(itemsIndicator.textContent).toEqual(9);
+    });
   });
 
   describe("Total Price Tests", () => {
     it.todo("Single item produces correct total");
+
     it.todo("Same item twice produces correct total");
+
     it.todo("Two different single items produces correct total");
+
     it.todo(
       "Two different items each with quantity of two produces correct total"
     );
