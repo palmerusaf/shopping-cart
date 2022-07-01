@@ -66,21 +66,14 @@ describe("Checkout Screen Tests", () => {
     });
     it("Quantity adjustment buttons are rendered", () => {
       const labels = screen.getAllByLabelText("Adjust Quantity");
-      expect(labels[0]).toBeInTheDocument();
-      expect(labels[1]).toBeInTheDocument();
+      const spinButtons = screen.getAllByRole("spinbutton");
+      const subtractButtons = screen.getAllByRole("button", { name: "-" });
+      const addButtons = screen.getAllByRole("button", { name: "+" });
 
-      expect(within(labels[0]).getByRole('button',{name:'-'})).toBeInTheDocument()
-      expect(
-        within(labels[0]).getByRole("button", { name: "+" })
-      ).toBeInTheDocument();
-      expect(within(labels[0]).getByRole("spinbutton")).toBeInTheDocument();
-      expect(
-        within(labels[1]).getByRole("button", { name: "-" })
-      ).toBeInTheDocument();
-      expect(
-        within(labels[1]).getByRole("button", { name: "+" })
-      ).toBeInTheDocument();
-      expect(within(labels[1]).getByRole("spinbutton")).toBeInTheDocument();
+      expect(labels.length).toEqual(2);
+      expect(spinButtons.length).toEqual(2);
+      expect(subtractButtons.length).toEqual(2);
+      expect(addButtons.length).toEqual(2);
     });
   });
 
@@ -91,8 +84,14 @@ describe("Checkout Screen Tests", () => {
       goToScreen("shopping_cart");
     });
 
-    it.todo("First item should have quantity of two when added twice");
-    it.todo("Second item should have quantity of two when added twice");
+    it("First item should have quantity of two when added twice", () => {
+      const spinButtons = screen.getAllByRole("spinbutton");
+      expect(spinButtons[0].value).toEqual(2);
+    });
+    it("Second item should have quantity of three when added three times", () => {
+      const spinButtons = screen.getAllByRole("spinbutton");
+      expect(spinButtons[1].value).toEqual(3);
+    });
   });
 
   describe("Quantity Adjustment Tests", () => {
