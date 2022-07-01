@@ -1,7 +1,6 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import App from "../App";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import App from "../App";
 
 beforeEach(() => {
   render(<App />);
@@ -53,9 +52,36 @@ describe("Checkout Screen Tests", () => {
       goToScreen("shopping_cart");
     });
 
-    it.todo("First item img and title are rendered correctly");
-    it.todo("Second item img and title are rendered correctly");
-    it.todo("Quantity adjustment buttons are rendered");
+    it("First item img and title are rendered correctly", () => {
+      expect(screen.getByAltText("Toner")).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { name: "Toner" })
+      ).toBeInTheDocument();
+    });
+    it("Second item img and title are rendered correctly", () => {
+      expect(screen.getByAltText("Plastic Cement")).toBeInTheDocument();
+      expect(
+        screen.getByRole("heading", { name: "Plastic Cement" })
+      ).toBeInTheDocument();
+    });
+    it("Quantity adjustment buttons are rendered", () => {
+      const labels = screen.getAllByLabelText("Adjust Quantity");
+      expect(labels[0]).toBeInTheDocument();
+      expect(labels[1]).toBeInTheDocument();
+
+      expect(within(labels[0]).getByRole('button',{name:'-'})).toBeInTheDocument()
+      expect(
+        within(labels[0]).getByRole("button", { name: "+" })
+      ).toBeInTheDocument();
+      expect(within(labels[0]).getByRole("spinbutton")).toBeInTheDocument();
+      expect(
+        within(labels[1]).getByRole("button", { name: "-" })
+      ).toBeInTheDocument();
+      expect(
+        within(labels[1]).getByRole("button", { name: "+" })
+      ).toBeInTheDocument();
+      expect(within(labels[1]).getByRole("spinbutton")).toBeInTheDocument();
+    });
   });
 
   describe("Quantity of Items Tests", () => {
@@ -73,14 +99,16 @@ describe("Checkout Screen Tests", () => {
     it.todo("Decrement button decreases the quantity of an item");
     it.todo("Increment button increases the quantity of an item");
     it.todo("Setting adjuster input to 3 sets quantity of an item to 3");
-    it.todo('Changing quantity also changes quantity on cart icon');
+    it.todo("Changing quantity also changes quantity on cart icon");
   });
 
-  describe('Total Price Tests', () => {
-    it.todo('Single item produces correct total');
-    it.todo('Same item twice produces correct total');
-    it.todo('Two different single items produces correct total');
-    it.todo('Two different items each with quantity of two produces correct total');
+  describe("Total Price Tests", () => {
+    it.todo("Single item produces correct total");
+    it.todo("Same item twice produces correct total");
+    it.todo("Two different single items produces correct total");
+    it.todo(
+      "Two different items each with quantity of two produces correct total"
+    );
   });
 });
 
