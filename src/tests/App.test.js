@@ -152,15 +152,43 @@ describe("Checkout Screen Tests", () => {
   });
 
   describe("Total Price Tests", () => {
-    it.todo("Single item produces correct total");
+    it("Single item produces correct total", () => {
+      clickAddToCart({ numOfClicks: 1 });
+      goToScreen("shopping_cart");
 
-    it.todo("Same item twice produces correct total");
+      const label = screen.getByLabelText("total");
+      const totalAmount = within(label).queryByText("$96.69");
+      expect(totalAmount).toBeInTheDocument();
+    });
 
-    it.todo("Two different single items produces correct total");
+    it("Same item twice produces correct total", () => {
+      clickAddToCart({ numOfClicks: 2 });
+      goToScreen("shopping_cart");
 
-    it.todo(
-      "Two different items each with quantity of two produces correct total"
-    );
+      const label = screen.getByLabelText("total");
+      const totalAmount = within(label).queryByText("$193.38");
+      expect(totalAmount).toBeInTheDocument();
+    });
+
+    it("Two different single items produces correct total", () => {
+      clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
+      clickAddToCart({ numOfClicks: 1, btnIndex: 1 });
+      goToScreen("shopping_cart");
+
+      const label = screen.getByLabelText("total");
+      const totalAmount = within(label).queryByText("$106.68");
+      expect(totalAmount).toBeInTheDocument();
+    });
+
+    it("Two different items each with quantity of two produces correct total", () => {
+      clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
+      clickAddToCart({ numOfClicks: 2, btnIndex: 1 });
+      goToScreen("shopping_cart");
+
+      const label = screen.getByLabelText("total");
+      const totalAmount = within(label).queryByText("$213.36");
+      expect(totalAmount).toBeInTheDocument();
+    });
   });
 });
 
