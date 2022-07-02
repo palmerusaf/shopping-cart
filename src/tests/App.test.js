@@ -45,6 +45,12 @@ describe("Checkout Screen Tests", () => {
     goToScreen("Shop");
   });
 
+  it("Display empty msg when cart is empty", () => {
+    goToScreen("shopping_cart");
+    const emptyMsg = screen.queryByText(/empty/i);
+    expect(emptyMsg).toBeInTheDocument();
+  });
+
   describe("Added Items are rendered Tests", () => {
     beforeEach(() => {
       clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
