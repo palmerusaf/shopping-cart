@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleAddToCart = (event) => {
     setTotalCartItems(totalCartItems + 1);
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header totalCartItems={totalCartItems} />
-        <PageRoutes handleAddToCart={handleAddToCart} />
+        <PageRoutes handleAddToCart={handleAddToCart} cartItems={cartItems} />
       </BrowserRouter>
       <Footer />
     </div>

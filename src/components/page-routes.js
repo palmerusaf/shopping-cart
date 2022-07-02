@@ -20,7 +20,10 @@ export default function PageRoutes(props) {
           />
         }
       />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route
+        path="/checkout"
+        element={<Checkout cartItems={props.cartItems} />}
+      />
       <Route path="*" element={<Sorry />} />
     </Routes>
   );

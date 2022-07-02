@@ -51,7 +51,7 @@ describe("Checkout Screen Tests", () => {
     expect(emptyMsg).toBeInTheDocument();
   });
 
-  describe("Added Items are rendered Tests", () => {
+  describe.skip("Added Items are rendered Tests", () => {
     beforeEach(() => {
       clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
       clickAddToCart({ numOfClicks: 1, btnIndex: 1 });
@@ -85,7 +85,7 @@ describe("Checkout Screen Tests", () => {
     });
   });
 
-  describe("Quantity of Items Tests", () => {
+  describe.skip("Quantity of Items Tests", () => {
     beforeEach(() => {
       clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
       clickAddToCart({ numOfClicks: 2, btnIndex: 1 });
@@ -102,7 +102,7 @@ describe("Checkout Screen Tests", () => {
     });
   });
 
-  describe("Quantity Adjustment Tests", () => {
+  describe.skip("Quantity Adjustment Tests", () => {
     beforeEach(() => {
       clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
       goToScreen("shopping_cart");
@@ -157,7 +157,7 @@ describe("Checkout Screen Tests", () => {
     });
   });
 
-  describe("Total Price Tests", () => {
+  describe.skip("Total Price Tests", () => {
     it("Single item produces correct total", () => {
       clickAddToCart({ numOfClicks: 1 });
       goToScreen("shopping_cart");
