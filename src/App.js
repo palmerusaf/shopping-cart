@@ -14,11 +14,11 @@ function App() {
     const index = event.target.parentNode.parentNode.id;
     if (buttonType === "+") {
       increaseProductAmount(index);
+    } else {
+      decreaseProductAmount(index);
     }
   };
-  const handleAdjustAmountInput = (event) => {
-    console.log("inputEvent :>> ", event);
-  };
+  const handleAdjustAmountInput = (event) => {};
 
   const handleAddToCart = (event) => {
     const index = getProductIndex(event);
@@ -47,8 +47,19 @@ function App() {
     setCartItems(
       cartItems.map((item) => {
         if (item.index == index) {
-          console.log("here");
           const newAmount = item.amount + 1;
+          return { ...item, amount: newAmount };
+        }
+        return item;
+      })
+    );
+  }
+
+  function decreaseProductAmount(index) {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.index == index) {
+          const newAmount = item.amount - 1;
           return { ...item, amount: newAmount };
         }
         return item;
