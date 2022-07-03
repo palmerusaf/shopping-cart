@@ -16,7 +16,6 @@ function App() {
     } else {
       setCartItems(cartItems.concat({ index: index, amount: 1 }));
     }
-    // setTotalCartItems(totalCartItems + 1);
   };
 
   useEffect(() => {
