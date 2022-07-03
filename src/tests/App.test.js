@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { queryAllByRole, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 
@@ -19,20 +19,29 @@ describe("Cart Icon Total Items Indicator Tests", () => {
     });
   });
 
-  describe('"Test Cart Icon with userEvents"', () => {
+  describe("Test Cart Icon with userEvents", () => {
     beforeEach(() => {
       goToScreen("Shop");
     });
 
     it("Cart icon should display span with content one when add to cart button is pressed one time", () => {
-      clickAddToCart({ numOfClicks: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
 
       const itemsIndicator = screen.getByTestId("items-indicator");
       expect(itemsIndicator.textContent).toEqual("1");
     });
 
     it("Cart icon should display span with content two when add to cart button is pressed two times", () => {
-      clickAddToCart({ numOfClicks: 2 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
 
       const itemsIndicator = screen.getByTestId("items-indicator");
       expect(itemsIndicator.textContent).toEqual("2");
@@ -53,8 +62,11 @@ describe("Checkout Screen Tests", () => {
 
   describe("Added Items are rendered Tests", () => {
     beforeEach(() => {
-      clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
-      clickAddToCart({ numOfClicks: 1, btnIndex: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
     });
 
@@ -73,7 +85,7 @@ describe("Checkout Screen Tests", () => {
     });
 
     it("Quantity adjustment buttons are rendered", () => {
-      const labels = screen.getAllByLabelText("Adjust Quantity");
+      const labels = screen.getAllByText("Adjust Quantity");
       const spinButtons = screen.getAllByRole("spinbutton");
       const subtractButtons = screen.getAllByRole("button", { name: "-" });
       const addButtons = screen.getAllByRole("button", { name: "+" });
@@ -87,8 +99,13 @@ describe("Checkout Screen Tests", () => {
 
   describe.skip("Quantity of Items Tests", () => {
     beforeEach(() => {
-      clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
-      clickAddToCart({ numOfClicks: 2, btnIndex: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
+      userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
     });
 
@@ -96,6 +113,7 @@ describe("Checkout Screen Tests", () => {
       const spinButtons = screen.getAllByRole("spinbutton");
       expect(spinButtons[0].value).toEqual(2);
     });
+
     it("Second item should have quantity of three when added three times", () => {
       const spinButtons = screen.getAllByRole("spinbutton");
       expect(spinButtons[1].value).toEqual(3);
@@ -104,7 +122,11 @@ describe("Checkout Screen Tests", () => {
 
   describe.skip("Quantity Adjustment Tests", () => {
     beforeEach(() => {
-      clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
     });
 
@@ -159,7 +181,10 @@ describe("Checkout Screen Tests", () => {
 
   describe.skip("Total Price Tests", () => {
     it("Single item produces correct total", () => {
-      clickAddToCart({ numOfClicks: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
       const label = screen.getByLabelText("total");
@@ -168,7 +193,11 @@ describe("Checkout Screen Tests", () => {
     });
 
     it("Same item twice produces correct total", () => {
-      clickAddToCart({ numOfClicks: 2 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
       const label = screen.getByLabelText("total");
@@ -177,8 +206,11 @@ describe("Checkout Screen Tests", () => {
     });
 
     it("Two different single items produces correct total", () => {
-      clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
-      clickAddToCart({ numOfClicks: 1, btnIndex: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
       const label = screen.getByLabelText("total");
@@ -187,8 +219,13 @@ describe("Checkout Screen Tests", () => {
     });
 
     it("Two different items each with quantity of two produces correct total", () => {
-      clickAddToCart({ numOfClicks: 2, btnIndex: 0 });
-      clickAddToCart({ numOfClicks: 2, btnIndex: 1 });
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
+      userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
       const label = screen.getByLabelText("total");
@@ -201,12 +238,4 @@ describe("Checkout Screen Tests", () => {
 function goToScreen(name) {
   const shoppingLink = screen.getByRole("link", { name });
   userEvent.click(shoppingLink);
-}
-
-function clickAddToCart({ numOfClicks, btnIndex = 0 }) {
-  const addToCartButton = screen.getAllByRole("button", {
-    name: "Add to Cart",
-  });
-  for (let i = 0; i < numOfClicks; i++)
-    userEvent.click(addToCartButton[btnIndex]);
 }
