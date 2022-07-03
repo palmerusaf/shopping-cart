@@ -2,18 +2,14 @@ import { displayEmptyCart } from "./displayEmptyCart";
 
 export default function Checkout(props) {
   const { cartItems, PRODUCTS } = props;
-  const handleAdjustAmountButton = (event) => {
-    console.log("buttonEvent :>> ", event);
-  };
-  const handleAdjustAmountInput = (event) => {
-    console.log("inputEvent :>> ", event);
-  };
+  const { handleAdjustAmountButton, handleAdjustAmountInput } =
+    props.cartEvents;
 
   const displayCartItems = () => {
     return cartItems.map((item) => {
       const product = PRODUCTS[item.index];
       return (
-        <div key={product.title} className="cart-item">
+        <div key={product.title} id={item.index} className="cart-item">
           <img
             src={product.image}
             alt={product.title}

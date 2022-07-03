@@ -16,13 +16,22 @@ export default function PageRoutes(props) {
         element={
           <Shopping
             PRODUCTS={PRODUCTS}
-            handleAddToCart={props.handleAddToCart}
+            handleAddToCart={props.events.handleAddToCart}
           />
         }
       />
       <Route
         path="/checkout"
-        element={<Checkout PRODUCTS={PRODUCTS} cartItems={props.cartItems} />}
+        element={
+          <Checkout
+            PRODUCTS={PRODUCTS}
+            cartEvents={{
+              handleAdjustAmountButton: props.events.handleAdjustAmountButton,
+              handleAdjustAmountInput: props.events.handleAdjustAmountInput,
+            }}
+            cartItems={props.cartItems}
+          />
+        }
       />
       <Route path="*" element={<Sorry />} />
     </Routes>

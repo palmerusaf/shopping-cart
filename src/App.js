@@ -9,6 +9,17 @@ function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
+  const handleAdjustAmountButton = (event) => {
+    const buttonType = event.target.textContent;
+    const index = event.target.parentNode.parentNode.id;
+    if (buttonType === "+") {
+      increaseProductAmount(index);
+    }
+  };
+  const handleAdjustAmountInput = (event) => {
+    console.log("inputEvent :>> ", event);
+  };
+
   const handleAddToCart = (event) => {
     const index = getProductIndex(event);
     if (productIsInCart(index)) {
@@ -35,7 +46,8 @@ function App() {
   function increaseProductAmount(index) {
     setCartItems(
       cartItems.map((item) => {
-        if (item.index === index) {
+        if (item.index == index) {
+          console.log("here");
           const newAmount = item.amount + 1;
           return { ...item, amount: newAmount };
         }
@@ -55,7 +67,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header totalCartItems={totalCartItems} />
-        <PageRoutes handleAddToCart={handleAddToCart} cartItems={cartItems} />
+        <PageRoutes
+          events={{
+            handleAddToCart,
+            handleAdjustAmountButton,
+            handleAdjustAmountInput,
+          }}
+          cartItems={cartItems}
+        />
       </BrowserRouter>
       <Footer />
     </div>
