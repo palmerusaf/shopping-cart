@@ -51,7 +51,7 @@ describe("Checkout Screen Tests", () => {
     expect(emptyMsg).toBeInTheDocument();
   });
 
-  describe.skip("Added Items are rendered Tests", () => {
+  describe("Added Items are rendered Tests", () => {
     beforeEach(() => {
       clickAddToCart({ numOfClicks: 1, btnIndex: 0 });
       clickAddToCart({ numOfClicks: 1, btnIndex: 1 });

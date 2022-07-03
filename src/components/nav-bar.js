@@ -27,12 +27,11 @@ export default function NavBar(props) {
             Shop
           </NavLink>
         </li>
-        <li>
+        <li className="cart-icon">
           <NavLink className={setClass} to="/checkout">
-            <span className="material-symbols-sharp cart-icon">
-              shopping_cart{itemsIndicator}
-            </span>
+            <span className="material-symbols-sharp">shopping_cart</span>
           </NavLink>
+          {itemsIndicator}
         </li>
       </ul>
     </nav>
