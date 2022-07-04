@@ -20,7 +20,8 @@ function App() {
 
   const handleAdjustAmountInput = (e) => {
     const productIndex = e.target.parentNode.parentNode.id;
-    const newAmount = parseInt(e.target.value, 10);
+    const userInput = e.target.value;
+    const newAmount = userInput !== "" ? parseInt(userInput, 10) : 1;
     adjustProductAmount(productIndex, newAmount);
   };
 
@@ -29,19 +30,23 @@ function App() {
     if (productIsInCart(index)) {
       increaseProductAmount(index);
     } else {
+      addProductToCart(index);
+    }
+
+    function addProductToCart(index) {
       setCartItems(cartItems.concat({ index: index, amount: 1 }));
+    }
+
+    function getProductIndex(event) {
+      const { parentNode } = event.target;
+      const index = [...parentNode.parentNode.children].indexOf(parentNode);
+      return index;
     }
   };
 
   useEffect(() => {
     setTotalCartItems(getTotalFrom(cartItems));
   }, [cartItems]);
-
-  function getProductIndex(event) {
-    const { parentNode } = event.target;
-    const index = [...parentNode.parentNode.children].indexOf(parentNode);
-    return index;
-  }
 
   function productIsInCart(index) {
     return cartItems.some((item) => item.index === index);

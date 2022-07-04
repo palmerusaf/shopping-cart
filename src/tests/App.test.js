@@ -176,14 +176,13 @@ describe("Checkout Screen Tests", () => {
       expect(title).toBeNull();
     });
 
-    it.only("Decrement deletion works when two different products are present", () => {
+    it("Decrement deletion works when two different products are present", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });
       userEvent.click(addCartButtons[0]);
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
-
 
       const minusButton = screen.getAllByRole("button", { name: "-" });
       userEvent.click(minusButton[0]);
@@ -196,7 +195,7 @@ describe("Checkout Screen Tests", () => {
       const subtractButton = screen.queryAllByRole("button", { name: "-" });
       const label = screen.queryAllByLabelText("Adjust Quantity");
 
-      expect(spinButton).toHaveLength(0)
+      expect(spinButton).toHaveLength(0);
       expect(label).toHaveLength(0);
       expect(subtractButton).toHaveLength(0);
       expect(addButton).toHaveLength(0);
@@ -245,6 +244,20 @@ describe("Checkout Screen Tests", () => {
       userEvent.type(spinButton, "007");
       userEvent.tab();
       expect(spinButton.value).toEqual("7");
+    });
+
+    it("If input is cleared, input resets to 1 on blur", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
+
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
+      userEvent.tab();
+      expect(spinButton.value).toEqual("1");
     });
 
     it("Changing quantity also changes quantity on cart icon", () => {
