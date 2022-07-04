@@ -150,7 +150,7 @@ describe("Checkout Screen Tests", () => {
       expect(spinButton).toHaveValue(1);
     });
 
-    it.skip("Decrement button deletes item when quantity is 1", () => {
+    it("Decrement button deletes item when quantity is 1", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });
@@ -174,6 +174,34 @@ describe("Checkout Screen Tests", () => {
       expect(img).toBeNull();
       const title = screen.queryByRole("heading", { name: "Toner" });
       expect(title).toBeNull();
+    });
+
+    it.only("Decrement deletion works when two different products are present", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
+      goToScreen("shopping_cart");
+
+
+      const minusButton = screen.getAllByRole("button", { name: "-" });
+      userEvent.click(minusButton[0]);
+      userEvent.click(minusButton[1]);
+
+      const spinButton = screen.queryAllByRole("spinbutton");
+      const title = screen.queryAllByRole("heading", { name: "Toner" });
+      const img = screen.queryAllByAltText("Toner");
+      const addButton = screen.queryAllByRole("button", { name: "+" });
+      const subtractButton = screen.queryAllByRole("button", { name: "-" });
+      const label = screen.queryAllByLabelText("Adjust Quantity");
+
+      expect(spinButton).toHaveLength(0)
+      expect(label).toHaveLength(0);
+      expect(subtractButton).toHaveLength(0);
+      expect(addButton).toHaveLength(0);
+      expect(img).toHaveLength(0);
+      expect(title).toHaveLength(0);
     });
 
     it("Increment button increases the quantity of an item", () => {
@@ -219,7 +247,7 @@ describe("Checkout Screen Tests", () => {
       expect(spinButton.value).toEqual("7");
     });
 
-    it.skip("Changing quantity also changes quantity on cart icon", () => {
+    it("Changing quantity also changes quantity on cart icon", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });
@@ -231,7 +259,9 @@ describe("Checkout Screen Tests", () => {
       expect(itemsIndicator.textContent).toEqual("2");
 
       const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
       userEvent.type(spinButton, "9");
+      userEvent.tab();
       expect(itemsIndicator.textContent).toEqual("9");
     });
   });

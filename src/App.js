@@ -11,12 +11,11 @@ function App() {
 
   const handleAdjustAmountButton = (e) => {
     const buttonType = e.target.textContent;
-    const index = e.target.parentNode.parentNode.id;
-    if (buttonType === "+") {
-      increaseProductAmount(index);
-    } else {
-      decreaseProductAmount(index);
-    }
+    const cartId = e.target.parentNode.parentNode.id;
+    if (buttonType === "+") return increaseProductAmount(cartId);
+    if (getProductAmount(cartId) === 1 && buttonType === "-")
+      return removeProductFromCart(cartId);
+    if (buttonType === "-") return decreaseProductAmount(cartId);
   };
 
   const handleAdjustAmountInput = (e) => {
@@ -53,9 +52,13 @@ function App() {
     adjustProductAmount(productIndex, newAmount);
   }
 
-  function decreaseProductAmount(productIndex) {
-    const newAmount = getProductAmount(productIndex) - 1;
-    adjustProductAmount(productIndex, newAmount);
+  function decreaseProductAmount(cartId) {
+    const newAmount = getProductAmount(cartId) - 1;
+    adjustProductAmount(cartId, newAmount);
+  }
+
+  function removeProductFromCart(productIndex) {
+    setCartItems(cartItems.filter((item) => item.index != productIndex));
   }
 
   function adjustProductAmount(productIndex, newAmount) {
