@@ -1,7 +1,23 @@
+import React, { useState, useEffect } from "react";
+
 export default function CartItem(props) {
   const { product, item } = props;
   const { handleAdjustAmountButton, handleAdjustAmountInput } =
     props.cartEvents;
+
+  const [inputValue, setInputValue] = useState(item.amount);
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    const keyStroke = e.nativeEvent.data;
+    if (isNaN(keyStroke)) return;
+    setInputValue(+value);
+  };
+
+  useEffect(() => {
+    console.log("item.amount :>> ", item.amount);
+    setInputValue(+item.amount);
+  }, [item]);
 
   return (
     <div key={product.title} id={item.index} className="cart-item">
@@ -16,8 +32,9 @@ export default function CartItem(props) {
           -
         </button>
         <input
+          onChange={handleChange}
           type="number"
-          value={item.amount}
+          value={inputValue}
           className="amount-adj__input"
           id="amount-adj__input"
           onBlur={handleAdjustAmountInput}

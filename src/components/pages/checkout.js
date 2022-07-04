@@ -8,7 +8,12 @@ export default function Checkout(props) {
     return cartItems.map((item) => {
       const product = PRODUCTS[item.index];
       return (
-        <CartItem cartEvents={props.cartEvents} product={product} item={item} />
+        <CartItem
+          key={product.title}
+          cartEvents={props.cartEvents}
+          product={product}
+          item={item}
+        />
       );
     });
   };

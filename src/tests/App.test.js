@@ -184,7 +184,7 @@ describe("Checkout Screen Tests", () => {
       expect(spinButton).toHaveValue(3);
     });
 
-    it.skip("Setting adjuster input to 3 sets quantity of an item to 3", () => {
+    it("Setting adjuster input to 3 sets quantity of an item to 3", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });

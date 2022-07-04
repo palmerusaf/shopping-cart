@@ -9,9 +9,9 @@ function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
-  const handleAdjustAmountButton = (event) => {
-    const buttonType = event.target.textContent;
-    const index = event.target.parentNode.parentNode.id;
+  const handleAdjustAmountButton = (e) => {
+    const buttonType = e.target.textContent;
+    const index = e.target.parentNode.parentNode.id;
     if (buttonType === "+") {
       increaseProductAmount(index);
     } else {
@@ -19,10 +19,10 @@ function App() {
     }
   };
 
-  const handleAdjustAmountInput = (event) => {
-    const { data } = event.nativeEvent;
-    if (isNaN(data)) return;
-    console.log("data :>> ", data);
+  const handleAdjustAmountInput = (e) => {
+    const productIndex = e.target.parentNode.parentNode.id;
+    const newAmount = parseInt(e.target.value, 10);
+    adjustProductAmount(productIndex, newAmount);
   };
 
   const handleAddToCart = (event) => {
