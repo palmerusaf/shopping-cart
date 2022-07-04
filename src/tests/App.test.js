@@ -1,4 +1,10 @@
-import { queryAllByRole, render, screen, within } from "@testing-library/react";
+import {
+  act,
+  queryAllByRole,
+  render,
+  screen,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 
@@ -196,6 +202,21 @@ describe("Checkout Screen Tests", () => {
       userEvent.clear(spinButton);
       userEvent.type(spinButton, "3");
       expect(spinButton).toHaveValue(3);
+    });
+
+    it("Leading zeros are removed from amount adjust input on blur", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
+
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
+      userEvent.type(spinButton, "007");
+      userEvent.tab();
+      expect(spinButton.value).toEqual("7");
     });
 
     it.skip("Changing quantity also changes quantity on cart icon", () => {

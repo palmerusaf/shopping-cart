@@ -11,12 +11,11 @@ export default function CartItem(props) {
     const { value } = e.target;
     const keyStroke = e.nativeEvent.data;
     if (isNaN(keyStroke)) return;
-    setInputValue(+value);
+    setInputValue(value);
   };
 
   useEffect(() => {
-    console.log("item.amount :>> ", item.amount);
-    setInputValue(+item.amount);
+    setInputValue(`${+item.amount}`);
   }, [item]);
 
   return (
