@@ -193,6 +193,7 @@ describe("Checkout Screen Tests", () => {
       goToScreen("shopping_cart");
 
       const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
       userEvent.type(spinButton, "3");
       expect(spinButton).toHaveValue(3);
     });

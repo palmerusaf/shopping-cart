@@ -18,7 +18,12 @@ function App() {
       decreaseProductAmount(index);
     }
   };
-  const handleAdjustAmountInput = (event) => {};
+
+  const handleAdjustAmountInput = (event) => {
+    const { data } = event.nativeEvent;
+    if (isNaN(data)) return;
+    console.log("data :>> ", data);
+  };
 
   const handleAddToCart = (event) => {
     const index = getProductIndex(event);
@@ -43,11 +48,20 @@ function App() {
     return cartItems.some((item) => item.index === index);
   }
 
-  function increaseProductAmount(index) {
+  function increaseProductAmount(productIndex) {
+    const newAmount = getProductAmount(productIndex) + 1;
+    adjustProductAmount(productIndex, newAmount);
+  }
+
+  function decreaseProductAmount(productIndex) {
+    const newAmount = getProductAmount(productIndex) - 1;
+    adjustProductAmount(productIndex, newAmount);
+  }
+
+  function adjustProductAmount(productIndex, newAmount) {
     setCartItems(
       cartItems.map((item) => {
-        if (item.index == index) {
-          const newAmount = item.amount + 1;
+        if (item.index == productIndex) {
           return { ...item, amount: newAmount };
         }
         return item;
@@ -55,16 +69,9 @@ function App() {
     );
   }
 
-  function decreaseProductAmount(index) {
-    setCartItems(
-      cartItems.map((item) => {
-        if (item.index == index) {
-          const newAmount = item.amount - 1;
-          return { ...item, amount: newAmount };
-        }
-        return item;
-      })
-    );
+  function getProductAmount(productIndex) {
+    const product = cartItems.find((item) => item.index == productIndex);
+    return product.amount;
   }
 
   function getTotalFrom(cartItems) {
