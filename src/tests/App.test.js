@@ -313,7 +313,18 @@ describe("Checkout Screen Tests", () => {
     });
   });
 
-  describe.skip("Total Price Tests", () => {
+  describe("Total Price Tests", () => {
+    it("Empty cart shows price of zero", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      goToScreen("shopping_cart");
+
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$0.00");
+    });
+
     it("Single item produces correct total", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
@@ -321,9 +332,9 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByLabelText("total");
-      const totalAmount = within(label).queryByText("$96.69");
-      expect(totalAmount).toBeInTheDocument();
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$96.69");
     });
 
     it("Same item twice produces correct total", () => {
@@ -334,9 +345,9 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByLabelText("total");
-      const totalAmount = within(label).queryByText("$193.38");
-      expect(totalAmount).toBeInTheDocument();
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$193.38");
     });
 
     it("Two different single items produces correct total", () => {
@@ -347,9 +358,9 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByLabelText("total");
-      const totalAmount = within(label).queryByText("$106.68");
-      expect(totalAmount).toBeInTheDocument();
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$106.68");
     });
 
     it("Two different items each with quantity of two produces correct total", () => {
@@ -362,9 +373,9 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByLabelText("total");
-      const totalAmount = within(label).queryByText("$213.36");
-      expect(totalAmount).toBeInTheDocument();
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$213.36");
     });
   });
 });
