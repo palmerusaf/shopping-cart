@@ -4,6 +4,7 @@ import PageRoutes from "./components/page-routes.js";
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
 import React, { useState, useEffect } from "react";
+import { Cart } from "./components/cart.js";
 
 function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
@@ -11,17 +12,23 @@ function App() {
 
   const handleAdjustAmountButton = (e) => {
     const buttonType = e.target.textContent;
-    const cartId = e.target.parentNode.parentNode.id;
-    if (buttonType === "+") return increaseProductAmount(cartId);
-    if (getProductAmount(cartId) === 1 && buttonType === "-")
-      return removeProductFromCart(cartId);
-    if (buttonType === "-") return decreaseProductAmount(cartId);
+    const cartItemId = e.target.parentNode.parentNode.id;
+    const cart = Cart(cartItems);
+    if (buttonType === "+")
+      return setCartItems(cart.increaseProductAmount(cartItemId));
+    if (cart.getProductAmount(cartItemId) === 1 && buttonType === "-")
+      return setCartItems(cart.removeProductFromCart(cartItemId));
+    if (buttonType === "-")
+      return setCartItems(cart.decreaseProductAmount(cartItemId));
   };
 
   const handleAdjustAmountInput = (e) => {
-    const productIndex = e.target.parentNode.parentNode.id;
+    const cartItemId = e.target.parentNode.parentNode.id;
     const userInput = e.target.value;
-    adjustProductAmount(productIndex, trimLeadingZeros(userInput));
+    const cart = Cart(cartItems);
+    setCartItems(
+      cart.adjustProductAmount(cartItemId, trimLeadingZeros(userInput))
+    );
 
     function trimLeadingZeros(input) {
       return parseInt(input, 10);
@@ -30,14 +37,11 @@ function App() {
 
   const handleAddToCart = (event) => {
     const index = getProductIndex(event);
-    if (productIsInCart(index)) {
-      increaseProductAmount(index);
+    const cart = Cart(cartItems);
+    if (cart.productIsInCart(index)) {
+      setCartItems(cart.increaseProductAmount(index));
     } else {
-      addProductToCart(index);
-    }
-
-    function addProductToCart(index) {
-      setCartItems(cartItems.concat({ index: index, amount: 1 }));
+      setCartItems(cart.addProductToCart(index));
     }
 
     function getProductIndex(event) {
@@ -48,49 +52,9 @@ function App() {
   };
 
   useEffect(() => {
-    setTotalCartItems(getTotalFrom(cartItems));
+    const cart = Cart(cartItems);
+    setTotalCartItems(cart.getTotalCartItems());
   }, [cartItems]);
-
-  function productIsInCart(index) {
-    return cartItems.some((item) => item.index === index);
-  }
-
-  function increaseProductAmount(productIndex) {
-    const newAmount = getProductAmount(productIndex) + 1;
-    adjustProductAmount(productIndex, newAmount);
-  }
-
-  function decreaseProductAmount(cartId) {
-    const newAmount = getProductAmount(cartId) - 1;
-    adjustProductAmount(cartId, newAmount);
-  }
-
-  function removeProductFromCart(productIndex) {
-    setCartItems(cartItems.filter((item) => item.index != productIndex));
-  }
-
-  function adjustProductAmount(productIndex, newAmount) {
-    setCartItems(
-      cartItems.map((item) => {
-        if (item.index == productIndex) {
-          return { ...item, amount: newAmount };
-        }
-        return item;
-      })
-    );
-  }
-
-  function getProductAmount(productIndex) {
-    const product = cartItems.find((item) => item.index == productIndex);
-    return product.amount;
-  }
-
-  function getTotalFrom(cartItems) {
-    const total = cartItems.reduce((total, { amount }) => {
-      return (total += amount);
-    }, 0);
-    return total;
-  }
 
   return (
     <div className="App">
