@@ -21,8 +21,11 @@ function App() {
   const handleAdjustAmountInput = (e) => {
     const productIndex = e.target.parentNode.parentNode.id;
     const userInput = e.target.value;
-    const newAmount = userInput !== "" ? parseInt(userInput, 10) : 1;
-    adjustProductAmount(productIndex, newAmount);
+    adjustProductAmount(productIndex, trimLeadingZeros(userInput));
+
+    function trimLeadingZeros(input) {
+      return parseInt(input, 10);
+    }
   };
 
   const handleAddToCart = (event) => {

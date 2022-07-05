@@ -9,9 +9,12 @@ export default function CartItem(props) {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    const keyStroke = e.nativeEvent.data;
-    if (isNaN(keyStroke)) return;
-    setInputValue(value);
+    if (isInvalidInput(+value)) return;
+    setInputValue(+value);
+
+    function isInvalidInput(input) {
+      return isNaN(input) || input < 1;
+    }
   };
 
   useEffect(() => {

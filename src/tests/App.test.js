@@ -246,10 +246,44 @@ describe("Checkout Screen Tests", () => {
       expect(spinButton.value).toEqual("7");
     });
 
-    it("If input is cleared, input resets to 1 on blur", () => {
+    it("When negative number is entered input reverts to last valid input", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
+
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
+      userEvent.type(spinButton, "-23");
+      userEvent.tab();
+      expect(spinButton.value).toEqual("3");
+    });
+
+    it("When string is entered input reverts to last valid input", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
+      goToScreen("shopping_cart");
+
+      const spinButton = screen.queryByRole("spinbutton");
+      userEvent.clear(spinButton);
+      userEvent.type(spinButton, "hacker-man");
+      userEvent.tab();
+      expect(spinButton.value).toEqual("3");
+    });
+
+    it("If input is cleared, input reverts to last valid input", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[0]);
       userEvent.click(addCartButtons[0]);
       userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
@@ -257,7 +291,7 @@ describe("Checkout Screen Tests", () => {
       const spinButton = screen.queryByRole("spinbutton");
       userEvent.clear(spinButton);
       userEvent.tab();
-      expect(spinButton.value).toEqual("1");
+      expect(spinButton.value).toEqual("4");
     });
 
     it("Changing quantity also changes quantity on cart icon", () => {
