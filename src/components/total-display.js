@@ -1,27 +1,24 @@
+import currency from "currency.js";
+
 export default function TotalDisplay(props) {
   const { PRODUCTS, cartItems } = props;
 
   const total = cartItems.length ? calculateTotal() : "$0.00";
 
   function calculateTotal() {
-    const subTotals = cartItems.map((item) => {
-      const price = PRODUCTS[item.index].price;
-      const subTotal = unFormat(price) * item.amount;
-      return subTotal;
-    });
+    const subTotals = calculateSubTotals();
     const total = subTotals.reduce((total, subTotal) => {
-      return (total += subTotal);
+      return currency(total).add(subTotal).format();
     }, 0);
-    return reFormat(total);
 
-    function unFormat(input) {
-      return +input.toString().replace("$", "").replace(".", "");
-    }
+    return total;
 
-    function reFormat(input) {
-      input = input.toString();
-      while (input.length < 3) input = "0" + input;
-      return "$" + input.slice(0, -2) + "." + input.slice(-2);
+    function calculateSubTotals() {
+      return cartItems.map((item) => {
+        const price = PRODUCTS[item.index].price;
+        const subTotal = currency(price).multiply(item.amount);
+        return subTotal;
+      });
     }
   }
 

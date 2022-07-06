@@ -400,6 +400,45 @@ describe("Checkout Screen Tests", () => {
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$213.36");
     });
+
+    it("Price total works with one comma", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[4]);
+      goToScreen("shopping_cart");
+
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$15,000.99");
+    });
+
+    it("Price total works with commas added", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[4]);
+      userEvent.click(addCartButtons[4]);
+      goToScreen("shopping_cart");
+
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$30,001.98");
+    });
+
+    it("Price total works with two commas", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      for (let i = 0; i < 100; i++) {
+        userEvent.click(addCartButtons[4]);
+      }
+      goToScreen("shopping_cart");
+
+      const label = screen.getByText(/total/i);
+      const totalAmount = within(label).queryByText(/\$/);
+      expect(totalAmount.textContent).toEqual("$1,500,099.00");
+    });
   });
 });
 
