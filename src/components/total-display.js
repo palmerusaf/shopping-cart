@@ -20,7 +20,7 @@ export default function TotalDisplay(props) {
 
     function reFormat(input) {
       input = input.toString();
-      if (input.length < 3) input = "0" + input;
+      while (input.length < 3) input = "0" + input;
       return "$" + input.slice(0, -2) + "." + input.slice(-2);
     }
   }

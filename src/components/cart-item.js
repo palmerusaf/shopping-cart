@@ -25,6 +25,9 @@ export default function CartItem(props) {
     <div key={product.title} id={item.index} className="cart-item">
       <img src={product.image} alt={product.title} className="cart-item__img" />
       <h2 className="cart-item__title">{product.title}</h2>
+      <h3 className="cart-item__price-label">
+        Price: <span className="cart-item__price">{product.price}</span>
+      </h3>
       <div className="amount-adj">
         <span className="amount-adj__label">Adjust Quantity</span>
         <button

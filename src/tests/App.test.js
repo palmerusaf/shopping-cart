@@ -1,6 +1,7 @@
 import {
   act,
   queryAllByRole,
+  queryByText,
   render,
   screen,
   within,
@@ -67,30 +68,52 @@ describe("Checkout Screen Tests", () => {
   });
 
   describe("Added Items are rendered Tests", () => {
-    beforeEach(() => {
+    it("First item img and title are rendered correctly", () => {
       const addCartButtons = screen.queryAllByRole("button", {
         name: "Add to Cart",
       });
       userEvent.click(addCartButtons[0]);
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
-    });
 
-    it("First item img and title are rendered correctly", () => {
-      expect(screen.getByAltText("Toner")).toBeInTheDocument();
-      expect(
-        screen.getByRole("heading", { name: "Toner" })
-      ).toBeInTheDocument();
+      const label = screen.queryAllByRole("heading", { name: /price/i })[0];
+      const price = within(label).queryByText(/\$/);
+      const image = screen.getByAltText("Toner");
+      const title = screen.getByRole("heading", { name: "Toner" });
+
+      expect(image).toBeInTheDocument();
+      expect(title).toBeInTheDocument();
+      expect(label).toBeInTheDocument();
+      expect(price.textContent).toEqual("$96.69");
     });
 
     it("Second item img and title are rendered correctly", () => {
-      expect(screen.getByAltText("Plastic Cement")).toBeInTheDocument();
-      expect(
-        screen.getByRole("heading", { name: "Plastic Cement" })
-      ).toBeInTheDocument();
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
+      goToScreen("shopping_cart");
+
+      const label = screen.queryAllByRole("heading", { name: /price/i })[1];
+      const price = within(label).queryByText(/\$/);
+      const image = screen.getByAltText("Plastic Cement");
+      const title = screen.getByRole("heading", { name: "Plastic Cement" });
+
+      expect(image).toBeInTheDocument();
+      expect(title).toBeInTheDocument();
+      expect(label).toBeInTheDocument();
+      expect(price.textContent).toEqual("$9.99");
     });
 
     it("Quantity adjustment buttons are rendered", () => {
+      const addCartButtons = screen.queryAllByRole("button", {
+        name: "Add to Cart",
+      });
+      userEvent.click(addCartButtons[0]);
+      userEvent.click(addCartButtons[1]);
+      goToScreen("shopping_cart");
+
       const labels = screen.getAllByText("Adjust Quantity");
       const spinButtons = screen.getAllByRole("spinbutton");
       const subtractButtons = screen.getAllByRole("button", { name: "-" });
