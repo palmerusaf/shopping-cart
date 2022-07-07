@@ -1,12 +1,68 @@
-.cart-item{
-    &__title{}
-    &__price-label{}
-    &__price{}
-    &__img{}
+@import "./variables.scss";
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.amount-adj{
-    &__label{}
-    &__button{}
-    &__input{}
+.cart-item {
+  display: grid;
+  grid-template-rows: repeat(3, 2rem);
+  grid-template-columns: 100px 200px;
+  background-color: white;
+  margin: 0.5rem;
+  padding: 2rem;
+
+  &__title {
+    grid-column: 2/3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__price-label {
+  }
+  &__price {
+  }
+  &__img {
+    width: 100px;
+    grid-row: 1/-1;
+    place-self: center;
+    margin-right: 1rem;
+  }
+  &,
+  &__img {
+    border-radius: 15px;
+    box-shadow: $shadow;
+  }
+}
+
+.amount-adj {
+  display: flex;
+  &__label {
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 25px;
+    padding: 16px;
+    margin: 0.2rem;
+    margin: 0.3rem;
+    color: white;
+    box-shadow: $shadow;
+    background-color: $dark-blue;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  &__input {
+    width: 3rem;
+    border: dashed;
+    text-align: center;
+    -moz-appearance: textfield;
+  }
+
+  &__button,
+  &__input {
+  }
 }

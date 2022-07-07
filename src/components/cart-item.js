@@ -18,6 +18,8 @@ export default function CartItem(props) {
     }
   };
 
+  const styleAsDelete = item.amount == 1 ? { backgroundColor: "red" } : {};
+
   useEffect(() => {
     setInputValue(`${+item.amount}`);
   }, [item]);
@@ -32,6 +34,7 @@ export default function CartItem(props) {
       <div className="amount-adj">
         <span className="amount-adj__label">Adjust Quantity</span>
         <button
+          style={styleAsDelete}
           className="amount-adj__button"
           onClick={handleAdjustAmountButton}
         >
