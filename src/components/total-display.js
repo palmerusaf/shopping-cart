@@ -23,8 +23,8 @@ export default function TotalDisplay(props) {
   }
 
   return (
-    <span>
+    <h3>
       Total: <span>{total}</span>
-    </span>
+    </h3>
   );
 }

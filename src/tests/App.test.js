@@ -343,7 +343,7 @@ describe("Checkout Screen Tests", () => {
       });
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$0.00");
     });
@@ -355,7 +355,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$96.69");
     });
@@ -368,7 +368,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[0]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$193.38");
     });
@@ -381,7 +381,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$106.68");
     });
@@ -396,7 +396,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[1]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$213.36");
     });
@@ -408,7 +408,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[4]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$15,000.99");
     });
@@ -421,7 +421,7 @@ describe("Checkout Screen Tests", () => {
       userEvent.click(addCartButtons[4]);
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$30,001.98");
     });
@@ -435,7 +435,7 @@ describe("Checkout Screen Tests", () => {
       }
       goToScreen("shopping_cart");
 
-      const label = screen.getByText(/total/i);
+      const label = screen.getByRole("heading", { name: /total/i });
       const totalAmount = within(label).queryByText(/\$/);
       expect(totalAmount.textContent).toEqual("$1,500,099.00");
     });
