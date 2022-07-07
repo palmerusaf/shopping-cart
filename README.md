@@ -71,7 +71,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://palmerusaf.github.io/shopping-cart)
 
-This project is from the open source web dev course called The Odin Project. It is designed to test your memory.
+This is a simple shopping website made with React and React testing library. Styling was done with SCSS.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
