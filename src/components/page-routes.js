@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Checkout from "./pages/checkout";
 import Shopping from "./pages/shopping";
-import Sorry from "./pages/sorry";
 import PRODUCTS from "../data/products.json";
 
 export default function PageRoutes(props) {
@@ -33,7 +32,7 @@ export default function PageRoutes(props) {
           />
         }
       />
-      <Route path="*" element={<Sorry />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 }
