@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shopping-cart/static/css/main.996fc645.css",
-    "main.js": "/shopping-cart/static/js/main.8a0f71f0.js",
+    "main.js": "/shopping-cart/static/js/main.f645d30e.js",
     "static/media/popcopy-logo.jpg": "/shopping-cart/static/media/popcopy-logo.ceb1a5e80098979e03f6.jpg",
     "index.html": "/shopping-cart/index.html",
     "main.996fc645.css.map": "/shopping-cart/static/css/main.996fc645.css.map",
-    "main.8a0f71f0.js.map": "/shopping-cart/static/js/main.8a0f71f0.js.map"
+    "main.f645d30e.js.map": "/shopping-cart/static/js/main.f645d30e.js.map"
   },
   "entrypoints": [
     "static/css/main.996fc645.css",
-    "static/js/main.8a0f71f0.js"
+    "static/js/main.f645d30e.js"
   ]
 }
