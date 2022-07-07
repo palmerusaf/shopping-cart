@@ -92,13 +92,13 @@ The purpose of this project is to gain exposure to React routing, React testing,
 
 ## Roadmap
 
-- [ ] Nav Bar
-  - [ ] Cart Icon
-- [ ] Home Screen
-- [ ] Shopping Screen
-  - [ ] Shopping Item
-    - [ ] Quantity Buttons
-- [ ] Checkout Screen
+- [x] Nav Bar
+  - [x] Cart Icon
+- [x] Home Screen
+- [x] Shopping Screen
+  - [x] Shopping Item
+    - [x] Quantity Buttons
+- [x] Checkout Screen
 
 See the [open issues](https://github.com/palmerusaf/shopping-cart/issues) for a full list of proposed features (and known issues).
 
