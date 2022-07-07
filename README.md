@@ -162,4 +162,4 @@ Project Link: [https://github.com/palmerusaf/shopping-cart](https://github.com/p
 [license-url]: https://github.com/palmerusaf/shopping-cart/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/branden-palmer-968765120
-[product-screenshot]: ./src//imgs/screen-shot.png
+[product-screenshot]: ./src/imgs/screen-shot.png
