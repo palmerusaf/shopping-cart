@@ -8,7 +8,12 @@ import { Cart } from "./components/cart.js";
 
 function App() {
   const [totalCartItems, setTotalCartItems] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  //TO-DO change back to empty array after styling
+  const [cartItems, setCartItems] = useState([
+    { index: 0, amount: 2 },
+    { index: 4, amount: 3 },
+  ]);
+  //TO-DO change back to empty array after styling
 
   const handleAdjustAmountButton = (e) => {
     const buttonType = e.target.textContent;

@@ -1,0 +1,25 @@
+@import "./variables.scss";
+
+.checkout {
+  &__title,
+  &__total {
+    background-color: white;
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0 0.8rem;
+    border-radius: 25px;
+    font-size: 1.6rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  &,
+  &__cart-items-area {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__total {
+    margin-bottom: 1rem;
+  }
+}

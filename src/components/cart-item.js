@@ -1,3 +1,4 @@
+import "../styles/cart-item.scss";
 import React, { useState, useEffect } from "react";
 
 export default function CartItem(props) {

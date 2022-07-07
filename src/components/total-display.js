@@ -23,7 +23,7 @@ export default function TotalDisplay(props) {
   }
 
   return (
-    <h3>
+    <h3 className="checkout__total">
       Total: <span>{total}</span>
     </h3>
   );

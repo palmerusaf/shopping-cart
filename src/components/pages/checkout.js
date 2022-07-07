@@ -1,6 +1,7 @@
+import "../../styles/checkout.scss";
 import { displayEmptyCart } from "../displayEmptyCart";
 import CartItem from "../cart-item.js";
-import TotalDisplay from '../total-display';
+import TotalDisplay from "../total-display";
 
 export default function Checkout(props) {
   const { cartItems, PRODUCTS } = props;
@@ -25,8 +26,11 @@ export default function Checkout(props) {
   return (
     <div className="checkout">
       <h1 className="checkout__title">My Cart</h1>
-      {cartItemsDisplay}
-      <TotalDisplay cartItems={cartItems} PRODUCTS={PRODUCTS} />
+      <div className="checkout__cart-items-area"> {cartItemsDisplay}</div>
+      <TotalDisplay
+        cartItems={cartItems}
+        PRODUCTS={PRODUCTS}
+      />
     </div>
   );
 }
