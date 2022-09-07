@@ -1,7 +1,7 @@
 import "../styles/header.scss";
 import React from "react";
 import NavBar from "./nav-bar";
-import Logo from "../imgs/popcopy-logo.jpg";
+import Logo from "../imgs/popcopy-logo.png";
 import { Link } from "react-router-dom";
 
 function Header(props) {
